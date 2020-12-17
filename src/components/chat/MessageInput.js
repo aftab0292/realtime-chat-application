@@ -8,7 +8,6 @@ const MessageInput = props => {
 
   const onSubmitHandler = event => {
     event.preventDefault();
-    console.log('message', message);
     sendMessage(message)
     setMessage('')
   }

@@ -2,7 +2,6 @@ import React from 'react';
 
 const Conversations = props => {
 	const { activeUser, activeChatUser, activeChats } = props;
-	console.log(activeUser, activeChatUser, JSON.stringify(activeChats))
 	return (
 		<div className="chat-messages">
 			{

@@ -31,11 +31,9 @@ const onConnect = (socket, io) => {
   socket.on('USER_CONNECTED', (user) => {
     const connectedUsers = userHelper.addUser(user)
     io.emit('CONNECTED_USERS', connectedUsers)
-    console.log(connectedUsers);
   })
 
   socket.on('MESSAGE_SENT', ({ sender, receiver, message }) => {
-    console.log('MESSAGE_SENT', sender, receiver, message)
     const activeChats = userHelper.createChat(sender, receiver, message)
     socket.to(receiver.socket_id).emit('MESSAGE_RECIEVED', activeChats)
     socket.emit('MESSAGE_RECIEVED', activeChats)

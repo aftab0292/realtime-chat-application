@@ -11,11 +11,9 @@ export const LoginForm = (props) => {
 
   const onChangeHandler = (event) => {
     setUsername(event.target.value);
-    console.log(username);
   }
 
   const validateUser = ({ user, isUsernameExist }) => {
-    console.log(user, isUsernameExist)
     if (isUsernameExist) {
       setError('This username already exists');
     } else {

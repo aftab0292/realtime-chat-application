@@ -27,12 +27,10 @@ const Layout = props => {
     })
 
     socket.on('CONNECTED_USERS', (users) => {
-      console.log('CONNECTED_USERS', users);
       setConnectedUsers(users)
     });
 
     socket.on('MESSAGE_RECIEVED', (chats) => {
-      console.log('MESSAGE_RECIEVED', chats);
       setActiveChats(chats)
     });
 

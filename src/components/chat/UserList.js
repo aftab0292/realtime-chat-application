@@ -1,18 +1,14 @@
 import React from 'react';
 
 const UserList = props => {
-
-  console.log('props', props)
   const { activeUser, activeChats, activeChatUser, connectedUsers, setActiveChat } = props;
 
   const onActiveChatHandler = (connectedUser) => {
-    console.log('onActiveChatHandler', connectedUser)
     setActiveChat(connectedUser);
   }
 
   const getUnreadMessageCount = (connectedUser) => {
     const unreadMessage = activeChats.filter(chat => chat.toUsername === activeUser.username && chat.fromUsernname === connectedUser.username && chat.read === false);
-    console.log('getUnreadMessageCount', unreadMessage.length);
     if (unreadMessage.length > 0) {
       return `(${unreadMessage.length} Unread)`
     }
@@ -32,7 +28,6 @@ const UserList = props => {
       ))
   }
 
-  console.log('connectedUsers', connectedUsers)
   return (
     <ul id="users" >{getActiveUser()}</ul>
   )

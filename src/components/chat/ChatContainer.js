@@ -13,7 +13,6 @@ const ChatContainer = props => {
   }, [activeUser])
 
   const handleActiveChatUser = (user) => {
-    console.log('handleActiveChatUser', user);
     setActiveChatUser(user)
     const chatTitleChange = `${activeUser.username} & ${user.username}`
     setChatTitle(<h1><i className="fas fa-comments"></i> {chatTitleChange}</h1>)

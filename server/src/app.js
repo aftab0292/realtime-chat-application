@@ -1,13 +1,28 @@
 // Internal Imports
+const fs = require('fs');
+const path = require('path');
 const http = require('http');
-
+const https = require('https');
 //  External Imports
 const express = require('express');
 const socketio = require('socket.io');
 
 // Initialize express framework
 const app = express();
-const server = http.createServer(app);
+
+let server;
+
+if (process.env.NODE_ENV === "production") {
+    const options = {
+        key: fs.readFileSync(path.join(__dirname, `YOUR_KEY_FILE_PATH`)),
+        cert: fs.readFileSync(path.join(__dirname, `YOUR_CERTIFICATE_FILE_PATH`))
+    };
+    // Create https server
+    server = https.createServer(options, app);
+} else {
+    // Create http server
+    server = http.createServer(app);
+}
 
 // Initialize socket
 const io = socketio(server);
